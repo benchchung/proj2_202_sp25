@@ -13,6 +13,7 @@ class Row:
 class Node:
     value:Row
     next: Node|None = None
+    #
 # ...
 
 # Then your functions.
