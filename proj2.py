@@ -26,4 +26,19 @@ class Node:
 # Then your functions.
 def read_csv_lines(filename: str) -> Optional[Node]:
     pass
+
+def parse_rows(fields: list[str]) -> Row:
+
+    def float_specializer(s:str) -> float | None:
+        if s != "":
+            return float(s)
+        else:
+            return None
+
+    new_row = Row(fields[0], int(fields[1]), float_specializer(fields[2]),
+                  float_specializer(fields[3]), float_specializer(fields[4]), float_specializer(fields[5]),
+                  float_specializer(fields[6]), float_specializer(fields[7]))
+
+    return new_row
+
 # ...
