@@ -32,7 +32,11 @@ def read_csv_lines(filename: str) -> Optional[Node]:
 
 
 def list_builder(reader) -> Optional[Node]:
-    pass
+    try:
+        remaining_fields = next(reader)
+        return Node(parse_row(remaining_fields), list_builder(reader))
+    except StopIteration:
+        return None
 
 def parse_row(fields: list[str]) -> Row:
 
