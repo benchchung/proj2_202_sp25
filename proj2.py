@@ -70,5 +70,11 @@ def listlen(data: Optional[Node]) -> int:
         return 0
     return 1 + listlen(data.next) #adds 1, and if the data isn't a none, it adds another 1
 
-
+def filter_rows(
+    data: Optional[Node],
+    field_name: str,
+    comparison: str,
+    value: Union[str, float, int]
+    ) -> Optional[Node]:
+    pass
 # ...
