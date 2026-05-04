@@ -34,6 +34,9 @@ class Node:
 # ...
 
 # Then your functions.
+#this function uses the csv reader function to read through lines of a csv file,
+#turning them into strings, which a helper function converts into floats/ints/strings
+#and is attached to a Row object.
 def read_csv_lines(filename: str) -> Optional[Node]:
     with open(filename) as csvfile:
         reader = csv.reader(csvfile)
@@ -42,7 +45,7 @@ def read_csv_lines(filename: str) -> Optional[Node]:
             return None
         return list_builder(reader)
 
-
+#this function places Rows into a Node and forms a linked list.
 def list_builder(reader) -> Optional[Node]:
     try:
         remaining_fields = next(reader)
@@ -50,6 +53,7 @@ def list_builder(reader) -> Optional[Node]:
     except StopIteration: #had to read up on csv documentation and file reading, 101 briefly touched on this
         return None
 
+#this is a helper function that fills out the required data for each argument in the Row object
 def parse_row(fields: list[str]) -> Row:
 
     new_row = Row(fields[0], int(fields[1]), float_specializer(fields[2]),
@@ -58,18 +62,22 @@ def parse_row(fields: list[str]) -> Row:
 
     return new_row
 
+#this is another helper function that converts the strings from CSV to floats, and also turns blank
+#spaces into None values.
 def float_specializer(s:str) -> float | None:
     if s != "":
         return float(s)
     else:
         return None
 
+#this counts the amount of country datas in a given dataset by parsing through a linked list recursively.
 def listlen(data: Optional[Node]) -> int:
     # base case is if you reach the end of the linked list
     if data is None:
         return 0
     return 1 + listlen(data.next) #adds 1, and if the data isn't a none, it adds another 1
 
+#goes through a list of data and aggregates a new linked list based on criteria, acting as a filter
 def filter_rows(
     data: Optional[Node],
     field_name: str,
@@ -90,6 +98,8 @@ def filter_rows(
     else:
         return filter_rows(data.next, field_name, comparison, value)
 
+#helper function for filter rows, where it essentially just checks for comparisons between the data
+#and the comparing value
 def comparer(field_value, comparison, value) -> bool:
     if comparison == "equal":
         return field_value == value
