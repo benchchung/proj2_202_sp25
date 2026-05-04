@@ -46,6 +46,7 @@ def read_csv_lines(filename: str) -> Optional[Node]:
         return list_builder(reader)
 
 #this function places Rows into a Node and forms a linked list.
+#this function doesn't have a type hint unless we import one for csv.reader
 def list_builder(reader) -> Optional[Node]:
     try:
         remaining_fields = next(reader)
@@ -100,7 +101,7 @@ def filter_rows(
 
 #helper function for filter rows, where it essentially just checks for comparisons between the data
 #and the comparing value
-def comparer(field_value, comparison, value) -> bool:
+def comparer(field_value:str, comparison:str, value:Union[str, float, int]) -> bool:
     if comparison == "equal":
         return field_value == value
     elif comparison == "less_than":
