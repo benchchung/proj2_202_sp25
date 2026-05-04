@@ -65,6 +65,10 @@ def float_specializer(s:str) -> float | None:
         return None
 
 def listlen(data: Optional[Node]) -> int:
-    pass
+    # base case is if you reach the end of the linked list
+    if data is None:
+        return 0
+    return 1 + listlen(data.next) #adds 1, and if the data isn't a none, it adds another 1
+
 
 # ...
