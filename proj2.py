@@ -64,4 +64,7 @@ def float_specializer(s:str) -> float | None:
     else:
         return None
 
+def listlen(data: Optional[Node]) -> int:
+    pass
+
 # ...
