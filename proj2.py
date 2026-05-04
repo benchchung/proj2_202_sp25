@@ -76,5 +76,27 @@ def filter_rows(
     comparison: str,
     value: Union[str, float, int]
     ) -> Optional[Node]:
-    pass
+    if data is None: #base case, where there is no data associated
+        return None
+    field_value = getattr(data.value, field_name) #this gets the field name in the row class
+
+    if field_name == "country" and comparison != "equal":
+        raise ValueError("countries cannot be compared and less or greater than")
+
+    if field_value is None:
+        return filter_rows(data.next, field_name, comparison, value)
+    if comparer(field_value, comparison, value): #this is how it checks if the comparison is true
+        return Node(data.value, filter_rows(data.next, field_name, comparison, value)) #recursive case
+    else:
+        return filter_rows(data.next, field_name, comparison, value)
+
+def comparer(field_value, comparison, value) -> bool:
+    if comparison == "equal":
+        return field_value == value
+    elif comparison == "less_than":
+        return field_value < value
+    elif comparison == "greater_than":
+        return field_value > value
+    return False
+
 # ...
