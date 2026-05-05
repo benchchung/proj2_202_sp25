@@ -1,8 +1,10 @@
-import csv
-import math
-from dataclasses import dataclass
-from typing import *
+from __future__ import annotations
 import sys
+import csv
+from typing import *
+from dataclasses import dataclass
+import math
+
 sys.setrecursionlimit(10_000)
 
 expected_headers = ["country", "year",
@@ -42,7 +44,7 @@ def read_csv_lines(filename: str) -> Optional[Node]:
         reader = csv.reader(csvfile)
         header = next(reader)
         if header != expected_headers:
-            return None
+            raise ValueError("Found an header that is not applicable")
         return list_builder(reader)
 
 #this function places Rows into a Node and forms a linked list.

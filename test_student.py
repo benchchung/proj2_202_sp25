@@ -23,7 +23,8 @@ class TestsForEachFunction(unittest.TestCase):
         self.assertEqual(result.electricity_and_heat_co2_emissions, None)
 
     def test_csv_reading(self):
-        self.assertEqual(read_csv_lines("data_with_wrong_header.csv"), None)
+        with self.assertRaises(ValueError):
+            read_csv_lines("data_with_wrong_header.csv")
 
 if __name__ == "__main__":
     unittest.main()
