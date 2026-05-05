@@ -1,0 +1,6 @@
+country,year,electricity_and_heat_co2_emissions,electricity_and_heat_co2_emissions_per_capita,energy_co2_emissions,energy_co2_emissions_per_capita,total_co2_emissions_excluding_lucf,total_co2_emissions_excluding_lucf_per_capita
+United States,2020,1234.5,3.75,5678.9,17.2,6000.1,18.3
+China,2020,3000.0,2.1,8000.0,5.6,9000.0,6.3
+India,2019,,,,,,
+Germany,2018,500.0,6.0,900.0,10.8,1000.0,12.0
+Brazil,2021,200.0,0.95,400.0,1.9,450.0,2.1
