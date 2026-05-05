@@ -51,7 +51,7 @@ class TestFunctionSignatures(unittest.TestCase):
         self.assertEqual(row.country, "USA")
 
     def test_read_csv_lines_type(self):
-        result = read_csv_lines("sample.csv")  # Ensure this file exists or mock it
+        result = read_csv_lines("ben_test_data.csv")  # Ensure this file exists or mock it
         self.assertTrue(result is None or isinstance(result, Node))
 
     def test_listlen_none(self):
