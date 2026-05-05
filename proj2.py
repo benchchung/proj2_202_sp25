@@ -51,7 +51,7 @@ def list_builder(reader) -> Optional[Node]:
     try:
         remaining_fields = next(reader)
         return Node(parse_row(remaining_fields), list_builder(reader)) #recursive case
-    except StopIteration: #had to read up on csv documentation and file reading, 101 briefly touched on this
+    except StopIteration: #had to read up on csv documentation + readme and file reading, 101 briefly touched on this
         return None
 
 #this is a helper function that fills out the required data for each argument in the Row object

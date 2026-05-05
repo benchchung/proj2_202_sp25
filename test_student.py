@@ -22,5 +22,8 @@ class TestsForEachFunction(unittest.TestCase):
         result =parse_row(fields)
         self.assertEqual(result.electricity_and_heat_co2_emissions, None)
 
+    def test_csv_reading(self):
+        self.assertEqual(read_csv_lines("data_with_wrong_header.csv"), None)
+
 if __name__ == "__main__":
     unittest.main()
